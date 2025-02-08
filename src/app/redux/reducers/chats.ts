@@ -48,20 +48,16 @@ const chatsSlice = createSlice({
       const message = action.payload
       const index = state.chatsArr.findIndex((chat) => chat.chatId === message.chatId)
       if (index === -1) return
-      const chatsArr = JSON.parse(JSON.stringify(state.chatsArr))
-      chatsArr[index].dialogArr.push(message)
-      state.chatsArr = JSON.parse(JSON.stringify(chatsArr))
+      state.chatsArr[index].dialogArr.push(message)
     },
     updateMessageStatus(state, action: PayloadAction<UpdatingMessageData>) {
-      const chatsArr = JSON.parse(JSON.stringify(state.chatsArr))
-      const chatIndex = chatsArr.findIndex((chat: ChatInfo) => chat.chatId === action.payload.chatId)
+      const chatIndex = state.chatsArr.findIndex((chat: ChatInfo) => chat.chatId === action.payload.chatId)
       if (chatIndex === -1) return
-      const messageIndex = chatsArr[chatIndex].dialogArr.findIndex(
+      const messageIndex = state.chatsArr[chatIndex].dialogArr.findIndex(
         (message: Message) => message.idMessage === action.payload.idMessage,
       )
       if (messageIndex === -1) return
-      chatsArr[chatIndex].dialogArr[messageIndex].status = action.payload.status
-      state.chatsArr = JSON.parse(JSON.stringify(chatsArr))
+      state.chatsArr[chatIndex].dialogArr[messageIndex].status = action.payload.status
     },
   },
 })
