@@ -1,5 +1,5 @@
 import React from 'react'
-import { Message } from '../../../types/projectTypes'
+import { Message } from '../../types/projectTypes'
 import { DialogAreaWrapper } from './style'
 import SentMessage from '../SentMessage'
 import ReceivedMessage from '../ReceivedMessage'

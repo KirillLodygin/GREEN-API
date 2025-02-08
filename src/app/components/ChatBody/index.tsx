@@ -5,7 +5,7 @@ import {
   errorMessageSelector,
   attentionMessageSelector,
   activeChatSelector,
-} from '../../../redux/selectors/chats'
+} from '../../store/selectors/chats'
 import { ModalWindow } from '../ModalWindow'
 import { ChatBody } from './styles'
 import ActiveChat from '../ActiveChat'

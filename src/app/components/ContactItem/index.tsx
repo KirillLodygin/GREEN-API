@@ -1,8 +1,8 @@
 import React from 'react'
-import { FaUserAlt } from 'react-icons/fa'
-import { AvatarWrapper, AvatarImage, InfoBlock, ContactWrapper } from './styles'
-import { onActiveChat } from '../../../redux/reducers/chats'
-import { useAppDispatch } from '../../../hooks'
+import { InfoBlock, ContactWrapper } from './styles'
+import { onActiveChat } from '../../store/reducers/chats'
+import { useAppDispatch } from '../../hooks'
+import Avatar from './Avatar'
 
 interface Props {
   contactName: string
@@ -20,8 +20,7 @@ const ContactItem: React.FC<Props> = ({ contactName, avatar, phone, chatId }) =>
 
   return (
     <ContactWrapper onClick={() => handleClick(chatId)}>
-      <AvatarWrapper>{avatar ? <AvatarImage src={avatar} alt="avatar" /> : <FaUserAlt size={50} />}</AvatarWrapper>
-
+      <Avatar avatar={avatar} />
       <InfoBlock>
         <span>{phone}</span>
         <span>{contactName}</span>

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { StyledContacts, Header, ContactList } from './styles'
-import { chatsArrSelector } from '../../../redux/selectors/chats'
-import { ChatInfo } from '../../../types/projectTypes'
+import { chatsArrSelector } from '../../store/selectors/chats'
+import { ChatInfo } from '../../types/projectTypes'
 import SearchInput from '../SearchInput'
 import ContactItem from '../ContactItem'
 

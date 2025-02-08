@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 export const GREEN_API = 'https://1103.api.green-api.com'
 const idInstance = Cookies.get('idInstance')
 const apiTokenInstance = Cookies.get('apiTokenInstance')
+const baseUrl = `${GREEN_API}/waInstance${idInstance}`
 
 type CheckWhatsappPayload = {
   phoneNumber: number
@@ -15,8 +16,8 @@ type GetContactInfoPayload = {
 }
 
 export const checkWhatsappMutation: MutationFunction<any, CheckWhatsappPayload> = async ({ phoneNumber }) => {
-  const url = `${GREEN_API}/waInstance${idInstance}/checkWhatsapp/${apiTokenInstance}`
-  const body = JSON.stringify({ phoneNumber })
+  const url = `${baseUrl}/checkWhatsapp/${apiTokenInstance}`
+  const body = { phoneNumber }
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -27,8 +28,8 @@ export const checkWhatsappMutation: MutationFunction<any, CheckWhatsappPayload> 
 }
 
 export const getContactInfoMutation: MutationFunction<any, GetContactInfoPayload> = async ({ chatId }) => {
-  const url = `${GREEN_API}/waInstance${idInstance}/GetContactInfo/${apiTokenInstance}`
-  const body = JSON.stringify({ chatId })
+  const url = `${baseUrl}/GetContactInfo/${apiTokenInstance}`
+  const body = { chatId }
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -46,12 +47,12 @@ export const getSettingsMutation: MutationFunction<any, { id: string; token: str
 }
 
 export const deleteNotificationMutation: MutationFunction<void, { receiptId: string }> = async ({ receiptId }) => {
-  const url = `${GREEN_API}/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${receiptId}`
+  const url = `${baseUrl}/deleteNotification/${apiTokenInstance}/${receiptId}`
   await axios.delete(url)
 }
 
 export const receiveNotificationMutation: MutationFunction<any, void> = async () => {
-  const url = `${GREEN_API}/waInstance${idInstance}/receiveNotification/${apiTokenInstance}`
+  const url = `${baseUrl}/receiveNotification/${apiTokenInstance}`
   const response = await axios.get(url)
   return response.data
 }

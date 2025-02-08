@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useMutation } from 'react-query'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
-import { getSettingsMutation } from '../../../mutations/appMutations'
+import { getSettingsMutation } from '../../../api'
 import { FormContainer, Form, Label, Input, Button, ErrorMessage } from './styles'
 
-const RegistrationForm: React.FC = () => {
+const RegistrationFormPage: React.FC = () => {
   const navigate = useNavigate()
   const [idInstance, setIdInstance] = useState('')
   const [apiTokenInstance, setApiTokenInstance] = useState('')
@@ -76,4 +76,4 @@ const RegistrationForm: React.FC = () => {
   )
 }
 
-export default RegistrationForm
+export default RegistrationFormPage

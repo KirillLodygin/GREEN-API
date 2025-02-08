@@ -1,6 +1,6 @@
 import React from 'react'
-import { useAppDispatch } from '../../../hooks'
-import { getAttentionMessage, getErrorMessage, updateIsAttention } from '../../../redux/reducers/chats'
+import { useAppDispatch } from '../../hooks'
+import { getAttentionMessage, getErrorMessage, updateIsAttention } from '../../store/reducers/chats'
 import { Backdrop, Wrapper, CloseButtonTop, StyledParagraph, CloseButtonBottom, CloseButtonTopWrapper } from './styles'
 
 interface Props {

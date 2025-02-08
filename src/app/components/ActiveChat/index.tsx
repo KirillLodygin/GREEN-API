@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChatInfo } from '../../../types/projectTypes'
+import { ChatInfo } from '../../types/projectTypes'
 import ContactItem from '../ContactItem'
 import SendPanel from '../SendPanel'
 import DialogArea from '../DialogArea'

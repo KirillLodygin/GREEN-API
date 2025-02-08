@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { useMutation } from 'react-query'
 import { SearchWrapper, Label, InputField, SearchButton } from './styles'
-import { useAppDispatch } from '../../../hooks'
-import { ChatInfo } from '../../../types/projectTypes'
-import { getErrorMessage, getAttentionMessage, updateIsAttention, updateChatsArr } from '../../../redux/reducers/chats'
-import { checkWhatsappMutation, getContactInfoMutation } from '../../../mutations/appMutations'
-import { getChatId, convertToRussianPhoneNumber, isDigit } from '../../../utils/'
+import { useAppDispatch } from '../../hooks'
+import { ChatInfo } from '../../types/projectTypes'
+import { getErrorMessage, getAttentionMessage, updateIsAttention, updateChatsArr } from '../../store/reducers/chats'
+import { checkWhatsappMutation, getContactInfoMutation } from '../../../api'
+import { getChatId, convertToRussianPhoneNumber, isDigit } from '../../utils'
 
 interface Props {
   chatIdsArr: Array<string>

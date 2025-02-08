@@ -3,10 +3,10 @@ import axios from 'axios'
 import { FiSend } from 'react-icons/fi'
 import { useMutation } from 'react-query'
 import { Wrapper, InputField, SendButton } from './styles'
-import { useAppDispatch } from '../../../hooks'
-import { getErrorMessage, updateIsAttention, updateChatDialogArr } from '../../../redux/reducers/chats'
-import { Message } from '../../../types/projectTypes'
-import { GREEN_API } from '../../../mutations/appMutations'
+import { useAppDispatch } from '../../hooks'
+import { getErrorMessage, updateIsAttention, updateChatDialogArr } from '../../store/reducers/chats'
+import { Message } from '../../types/projectTypes'
+import { GREEN_API } from '../../../api'
 
 interface Props {
   activeChatId: string

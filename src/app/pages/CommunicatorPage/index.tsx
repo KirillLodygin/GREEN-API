@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../../hooks'
+import { useAppDispatch } from '../../hooks'
 import { GridContainer, ContactsBlock, ChatBodyBlock } from './styles'
-import Contacts from '../../components/Contacts/index'
+import Contacts from '../../components/Contacts'
 import ChatBodyComponent from '../../components/ChatBody'
-import { GREEN_API } from '../../../mutations/appMutations'
+import { GREEN_API } from '../../../api'
 import {
   getErrorMessage,
   updateChatDialogArr,
   updateIsAttention,
   updateMessageStatus,
-} from '../../../redux/reducers/chats'
-import { Message, UpdatingMessageData } from '../../../types/projectTypes'
+} from '../../store/reducers/chats'
+import { Message, UpdatingMessageData } from '../../types/projectTypes'
 
 const CommunicatorPage: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -43,14 +43,15 @@ const CommunicatorPage: React.FC = () => {
   }, [navigate])
 
   const processMessage = (responseDataBody: any) => {
-    if (responseDataBody.senderData.chatId !== responseDataBody.senderData.sender) return
-    if (!responseDataBody.messageData.textMessageData) return
+    const { senderData, messageData } = responseDataBody
+    if (senderData.chatId !== senderData.sender) return
+    if (!messageData.textMessageData) return
     const text =
       responseDataBody.messageData.typeMessage !== 'textMessage'
         ? 'Чат пересылает только текстовые сообщения! Вам послали что-то другое!'
-        : responseDataBody.messageData.textMessageData.textMessage
+        : messageData.textMessageData.textMessage
     const newMessage: Message = {
-      chatId: responseDataBody.senderData.chatId,
+      chatId: senderData.chatId,
       idMessage: responseDataBody.idMessage,
       class: 'received',
       status: '',
