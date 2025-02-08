@@ -45,14 +45,3 @@ export const getSettingsMutation: MutationFunction<any, { id: string; token: str
   const response = await axios.get(url)
   return response.data
 }
-
-export const deleteNotificationMutation: MutationFunction<void, { receiptId: string }> = async ({ receiptId }) => {
-  const url = `${baseUrl}/deleteNotification/${apiTokenInstance}/${receiptId}`
-  await axios.delete(url)
-}
-
-export const receiveNotificationMutation: MutationFunction<any, void> = async () => {
-  const url = `${baseUrl}/receiveNotification/${apiTokenInstance}`
-  const response = await axios.get(url)
-  return response.data
-}
