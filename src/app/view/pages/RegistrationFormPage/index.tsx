@@ -32,7 +32,7 @@ const RegistrationForm: React.FC = () => {
     const savedApiTokenInstance = Cookies.get('apiTokenInstance')
 
     if (savedIdInstance && savedApiTokenInstance) {
-      navigate('/chat')
+      getSettings.mutate({ id: savedIdInstance, token: savedApiTokenInstance })
     }
   }, [])
 
